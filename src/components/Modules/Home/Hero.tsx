@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 
 const Hero = () => {
-  // Keyframes for animations are now handled by the parent page
   const styles = `
     @keyframes float {
       0% { transform: translateY(0px); }
@@ -56,7 +55,6 @@ const Hero = () => {
 
             {/* Right Column: Visual Element */}
             <div className="flex items-center justify-center relative min-h-[300px] lg:min-h-[400px] scale-75 md:scale-90 lg:scale-100 transition-transform duration-300">
-              {/* Background blobs are now handled by the parent page */}
 
               {/* Central Floating Card */}
               <div

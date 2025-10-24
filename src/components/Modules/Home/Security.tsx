@@ -36,10 +36,10 @@ const Security = () => {
           {securityFeatures.map((feature, index) => (
             <div
               key={index}
-              className="p-8 bg-background/80 backdrop-blur-sm border rounded-lg shadow-sm hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300"
+              className="p-8 bg-background/80 backdrop-blur-sm border rounded-lg shadow-sm hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 text-center"
             >
               <div
-                className={`flex items-center justify-center w-16 h-16 rounded-full mb-6 ${feature.bgColor}`}
+                className={`flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto ${feature.bgColor}`}
               >
                 {feature.icon}
               </div>

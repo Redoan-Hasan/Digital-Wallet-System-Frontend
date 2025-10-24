@@ -61,24 +61,22 @@ const PlatformRoles = () => {
         </div>
 
         <Tabs defaultValue="user" className="mt-12">
-          {/* single primary border around the whole tab group */}
-          <TabsList className="flex justify-center space-x-4 max-w-2xl mx-auto bg-transparent border-2 border-primary rounded-lg p-1">
+          <TabsList className="flex justify-center space-x-4 max-w-2xl mx-auto bg-transparent border-2 border-primary/30 rounded-lg p-1">
             {roles.map((role) => (
               <TabsTrigger
                 key={role.value}
                 value={role.value}
-                className="px-3 py-2 text-base font-medium text-primary transition-all duration-200 rounded-md border border-transparent data-[state=active]:border-primary bg-primary/10 hover:bg-primary/20"
+                className={
+                  "px-3 py-2 text-base font-medium transition-all duration-200 rounded-md " +
+                  "border-2 border-transparent bg-primary/15 hover:bg-primary/25 text-primary " +
+                  "data-[state=active]:border-primary data-[state=active]:bg-primary/15 data-[state=active]:text-primary " +
+                  "dark:data-[state=active]:border-primary dark:data-[state=active]:bg-primary/15"
+                }
               >
                 <div className="flex items-center space-x-2 text-primary">
-                  {role.value === "user" && (
-                    <User className="w-4 h-4 text-primary" />
-                  )}
-                  {role.value === "agent" && (
-                    <UserCog className="w-4 h-4 text-primary" />
-                  )}
-                  {role.value === "admin" && (
-                    <Shield className="w-4 h-4 text-primary" />
-                  )}
+                  {role.value === "user" && <User className="w-4 h-4" />}
+                  {role.value === "agent" && <UserCog className="w-4 h-4" />}
+                  {role.value === "admin" && <Shield className="w-4 h-4" />}
                   <span>{role.name}</span>
                 </div>
               </TabsTrigger>

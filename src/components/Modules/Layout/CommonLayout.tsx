@@ -4,9 +4,9 @@ import Footer from "./Footer";
 
 const CommonLayout = () => {
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
             <Navbar />
-            <div>
+            <div className="flex-grow">
                 <Outlet />
             </div>
             <Footer />
