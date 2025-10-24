@@ -68,7 +68,7 @@ const PlatformRoles = () => {
                 value={role.value}
                 className={
                   "px-3 py-2 text-base font-medium transition-all duration-200 rounded-md " +
-                  "border-2 border-transparent bg-primary/15 hover:bg-primary/25 text-primary " +
+                  "border-2 border-transparent hover:bg-primary/25 text-primary " +
                   "data-[state=active]:border-primary data-[state=active]:bg-primary/15 data-[state=active]:text-primary " +
                   "dark:data-[state=active]:border-primary dark:data-[state=active]:bg-primary/15"
                 }

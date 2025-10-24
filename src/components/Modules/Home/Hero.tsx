@@ -7,6 +7,7 @@ import {
   TrendingUp,
   Wallet,
 } from "lucide-react";
+import { Link } from "react-router";
 
 const Hero = () => {
   const styles = `
@@ -43,19 +44,21 @@ const Hero = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button size="lg" className="group">
-                  Get Started
-                  <MoveRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-                </Button>
+                <Link to="/login">
+                  <Button size="lg" className="group">
+                    Get Started
+                    <MoveRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+                <Link to="/about">
                 <Button size="lg" variant="outline">
                   Learn More
-                </Button>
+                </Button></Link>
               </div>
             </div>
 
             {/* Right Column: Visual Element */}
             <div className="flex items-center justify-center relative min-h-[300px] lg:min-h-[400px] scale-75 md:scale-90 lg:scale-100 transition-transform duration-300">
-
               {/* Central Floating Card */}
               <div
                 className="relative w-72 h-44 rounded-2xl bg-background/50 backdrop-blur-lg shadow-2xl shadow-primary/10 border border-white/10 animate-float flex flex-col items-center justify-center p-6 text-center"

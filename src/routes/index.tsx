@@ -4,6 +4,7 @@ import ContactUs from "@/pages/common/ContactUs";
 import Faq from "@/pages/common/Faq";
 import Features from "@/pages/common/Features";
 import HomePage from "@/pages/common/HomePage";
+import Login from "@/pages/common/Login";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
@@ -16,20 +17,24 @@ export const router = createBrowserRouter([
         Component: HomePage,
       },
       {
-        path: "/about",
+        path: "about",
         Component: AboutUs,
       },
       {
-        path: "/features",
+        path: "features",
         Component: Features,
       },
       {
-        path: "/contact",
+        path: "contact",
         Component: ContactUs,
       },
       {
-        path: "/faq",
+        path: "faq",
         Component: Faq,
+      },
+      {
+        path: "login",
+        Component: Login,
       },
     ],
   },

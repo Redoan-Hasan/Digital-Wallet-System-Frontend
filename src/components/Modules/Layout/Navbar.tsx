@@ -11,10 +11,10 @@ const Navbar = () => {
 
   const navOptions = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Features", path: "/features" },
-    { name: "Contact Us", path: "/contact" },
-    { name: "FAQ", path: "/faq" },
+    { name: "About", path: "about" },
+    { name: "Features", path: "features" },
+    { name: "Contact Us", path: "contact" },
+    { name: "FAQ", path: "faq" },
   ];
 
   return (
