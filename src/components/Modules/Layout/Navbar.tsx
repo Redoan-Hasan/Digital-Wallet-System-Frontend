@@ -3,11 +3,23 @@ import { Link, NavLink } from "react-router";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
+import {
+  authApi,
+  useGetMyInfoQuery,
+  useLogoutMutation,
+} from "@/redux/features/auth/auth.api";
+import { useAppDispatch } from "@/redux/hook";
 
 const Navbar = () => {
+  const { data } = useGetMyInfoQuery();
+  console.log(data);
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [logout] = useLogoutMutation();
+  const dispatch = useAppDispatch();
+  const handleLogout = async () => {
+    await logout();
+    dispatch(authApi.util.resetApiState());
+  };
 
   const navOptions = [
     { name: "Home", path: "/" },
@@ -24,10 +36,12 @@ const Navbar = () => {
           {/* Logo and Brand Name */}
           <div className="shrink-0">
             <Link to="/" className="flex items-center space-x-2">
-              <img className="h-10 w-auto" src="/digital-wallet-system-logo-removebg-preview.png" alt="VaultPay" />
-              <span className="text-2xl font-bold text-primary">
-                VaultPay
-              </span>
+              <img
+                className="h-10 w-auto"
+                src="/digital-wallet-system-logo-removebg-preview.png"
+                alt="VaultPay"
+              />
+              <span className="text-2xl font-bold text-primary">VaultPay</span>
             </Link>
           </div>
 
@@ -39,7 +53,7 @@ const Navbar = () => {
                   key={item.name}
                   to={item.path}
                   className={({ isActive }) =>
-                    `px-3 py-2 text-base font-medium text-primary transition-all duration-300 border-2 rounded-md hover:shadow-lg hover:shadow-primary/30 ${
+                    `px-3 py-2 text-base font-medium text-primary transition-all duration-300 border-2 rounded-md hover:shadow-lg hover:shadow-primary/30 cursor-pointer ${
                       isActive ? "border-primary" : "border-transparent"
                     }`
                   }
@@ -53,13 +67,13 @@ const Navbar = () => {
           {/* Desktop: Auth Buttons and Theme Toggle */}
           <div className="hidden lg:flex items-center space-x-4">
             <ModeToggle />
-            {isLoggedIn ? (
-              <Button onClick={() => setIsLoggedIn(false)} variant="default">
+            {data?.data?.data?.email ? (
+              <Button variant="default" onClick={handleLogout}>
                 Logout
               </Button>
             ) : (
-              <Button onClick={() => setIsLoggedIn(true)} variant="default">
-                Login
+              <Button variant="default" asChild>
+                <Link to="/login">Login</Link>
               </Button>
             )}
           </div>
@@ -75,7 +89,11 @@ const Navbar = () => {
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
-              {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
+              {isOpen ? (
+                <X className="block h-6 w-6" />
+              ) : (
+                <Menu className="block h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -91,7 +109,7 @@ const Navbar = () => {
                 to={item.path}
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium text-primary transition-colors ${
+                  `block px-3 py-2 rounded-md text-base font-medium text-primary transition-colors cursor-pointer ${
                     isActive ? "bg-primary/10" : ""
                   }`
                 }
@@ -103,15 +121,29 @@ const Navbar = () => {
           {/* Mobile: Auth Buttons */}
           <div className="pt-4 pb-3 border-t border-border">
             <div className="px-2 space-y-2">
-                {isLoggedIn ? (
-                  <Button onClick={() => {setIsLoggedIn(false); setIsOpen(false);}} className="w-full" variant="default">
-                    Logout
-                  </Button>
-                ) : (
-                  <Button onClick={() => {setIsLoggedIn(true); setIsOpen(false);}} className="w-full" variant="default">
-                    Login
-                  </Button>
-                )}
+              {data?.data?.data?.email ? (
+                <Button
+                  onClick={() => {
+                    handleLogout();
+                    setIsOpen(false);
+                  }}
+                  className="w-full"
+                  variant="default"
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                  className="w-full"
+                  variant="default"
+                  asChild
+                >
+                  <Link to="/login">Login</Link>
+                </Button>
+              )}
             </div>
           </div>
         </div>
