@@ -1,3 +1,5 @@
+import type { ComponentType } from "react";
+
 export type { IUser } from "./auth.type";
 export interface IResponse<T> {
   success: boolean;
@@ -14,3 +16,12 @@ export interface IResponse<T> {
 export type TRole = "ADMIN" | "USER" | "AGENT";
 
 export type TStatus = "ACTIVE" | "BLOCKED";
+
+export interface ISidebarItem {
+  title: string;
+  items: {
+    title: string;
+    url: string;
+    component: ComponentType;
+  }[];
+}

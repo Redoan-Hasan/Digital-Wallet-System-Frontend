@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,7 @@ import {
   useLogoutMutation,
 } from "@/redux/features/auth/auth.api";
 import { useAppDispatch } from "@/redux/hook";
+import { Role } from "@/constants/role";
 
 const Navbar = () => {
   const { data } = useGetMyInfoQuery();
@@ -22,11 +23,14 @@ const Navbar = () => {
   };
 
   const navOptions = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "about" },
-    { name: "Features", path: "features" },
-    { name: "Contact Us", path: "contact" },
-    { name: "FAQ", path: "faq" },
+    { name: "Home", path: "/", role: "ALL" },
+    { name: "About", path: "about", role: "ALL" },
+    { name: "Features", path: "features", role: "ALL" },
+    { name: "Contact Us", path: "contact", role: "ALL" },
+    { name: "FAQ", path: "faq", role: "ALL" },
+    { name: "Dashboard", path: "/admin", role: Role.ADMIN },
+    { name: "Dashboard", path: "/agent", role: Role.AGENT },
+    { name: "Dashboard", path: "/user", role: Role.USER },
   ];
 
   return (
@@ -48,18 +52,35 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:block">
             <div className="ml-10 flex items-center space-x-4">
-              {navOptions.map((item) => (
-                <NavLink
-                  key={item.name}
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `px-3 py-2 text-base font-medium text-primary transition-all duration-300 border-2 rounded-md hover:shadow-lg hover:shadow-primary/30 cursor-pointer ${
-                      isActive ? "border-primary" : "border-transparent"
-                    }`
-                  }
-                >
-                  {item.name}
-                </NavLink>
+              {navOptions.map((item, index) => (
+                <React.Fragment key={index}>
+                  {item.role === "ALL" && (
+                    <NavLink
+                      key={item.name}
+                      to={item.path}
+                      className={({ isActive }) =>
+                        `px-3 py-2 text-base font-medium text-primary transition-all duration-300 border-2 rounded-md hover:shadow-lg hover:shadow-primary/30 cursor-pointer ${
+                          isActive ? "border-primary" : "border-transparent"
+                        }`
+                      }
+                    >
+                      {item.name}
+                    </NavLink>
+                  )}
+                  {data?.data?.data?.role === item.role && (
+                    <NavLink
+                      key={item.name}
+                      to={item.path}
+                      className={({ isActive }) =>
+                        `px-3 py-2 text-base font-medium text-primary transition-all duration-300 border-2 rounded-md hover:shadow-lg hover:shadow-primary/30 cursor-pointer ${
+                          isActive ? "border-primary" : "border-transparent"
+                        }`
+                      }
+                    >
+                      {item.name}
+                    </NavLink>
+                  )}
+                </React.Fragment>
               ))}
             </div>
           </div>

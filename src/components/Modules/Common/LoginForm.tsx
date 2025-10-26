@@ -21,7 +21,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useLoginMutation } from "@/redux/features/auth/auth.api";
 import { toast } from "sonner";
 
@@ -157,9 +157,9 @@ export function LoginForm({
               </Button>
               <p className="text-center text-sm text-muted-foreground mt-4">
                 Don&apos;t have an account?{" "}
-                <a href="#" className="text-primary hover:underline">
+                <Link to="/register" className="text-primary hover:underline">
                   Sign up
-                </a>
+                </Link>
               </p>
             </form>
           </Form>

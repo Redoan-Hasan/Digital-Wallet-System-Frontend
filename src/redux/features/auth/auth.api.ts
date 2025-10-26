@@ -18,13 +18,13 @@ export const authApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["USER"],
     }),
-    // register: builder.mutation({
-    //   query: (data) => ({
-    //     url: "/user/register",
-    //     method: "POST",
-    //     data: data,
-    //   }),
-    // }),
+    register: builder.mutation<IResponse<null>, { name: string; email: string; password: string; pin: string }>({
+      query: (data) => ({
+        url: "/user/register",
+        method: "POST",
+        data: data,
+      }),
+    }),
     getMyInfo: builder.query<IResponse<{ data: IUser }>, void>({
       query: () => ({
         url: "/user/me",
@@ -35,4 +35,4 @@ export const authApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation , useGetMyInfoQuery , useLogoutMutation } = authApi;
+export const { useLoginMutation , useGetMyInfoQuery , useLogoutMutation, useRegisterMutation } = authApi;
