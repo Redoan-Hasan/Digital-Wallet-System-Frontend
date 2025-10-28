@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function Login() {
   return (
-    <div className="relative bg-background overflow-hidden min-h-[calc(100vh-2562px)] flex items-center justify-center py-12">
+    <div className="relative bg-background overflow-hidden flex items-center justify-center py-12">
       {/* Unified Background Blobs*/}
       <div className="absolute top-12 -left-8 w-72 h-72 lg:w-96 lg:h-96 bg-primary/5 rounded-full blur-3xl animate-slow-spin" />
       <div className="hidden lg:block absolute top-40 right-8 w-56 h-56 lg:w-80 lg:h-80 bg-primary/5 rounded-full blur-3xl animate-slow-spin" />

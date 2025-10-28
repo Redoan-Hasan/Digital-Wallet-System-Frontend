@@ -1,10 +1,11 @@
-import AddMoney from "@/pages/user/AddMoney";
-import BecomeAgent from "@/pages/user/BecomeAgent";
-import MyProfile from "@/pages/user/MyProfile";
-import MyWallet from "@/pages/user/MyWallet";
-import SendMoney from "@/pages/user/SendMoney";
-import TransactionHistory from "@/pages/user/TransactionHistory";
-import WithdrawMoney from "@/pages/user/WithdrawMoney";
+import AddMoney from "@/pages/userAndagent/AddMoney";
+import BecomeAgent from "@/pages/userAndagent/BecomeAgent";
+import CashOut from "@/pages/userAndagent/CashOut";
+import MyProfile from "@/pages/userAndagent/MyProfile";
+import MyWallet from "@/pages/userAndagent/MyWallet";
+import SendMoney from "@/pages/userAndagent/SendMoney";
+import TransactionHistory from "@/pages/userAndagent/TransactionHistory";
+import WithdrawMoney from "@/pages/userAndagent/WithdrawMoney";
 import type { ISidebarItem } from "@/types";
 
 export const UserSidebarItems: ISidebarItem[] = [
@@ -13,7 +14,7 @@ export const UserSidebarItems: ISidebarItem[] = [
     items: [
       {
         title: "My Profile",
-        url: "/user",
+        url: "/user/my-profile",
         component: MyProfile,
       },
       {
@@ -35,6 +36,11 @@ export const UserSidebarItems: ISidebarItem[] = [
         title: "Send Money",
         url: "/user/send-money",
         component: SendMoney,
+      },
+      {
+        title: "Cash Out",
+        url: "/user/cash-out",
+        component: CashOut,
       },
       {
         title: "Transaction History",

@@ -124,19 +124,37 @@ const Navbar = () => {
       {isOpen && (
         <div className="lg:hidden border-t border-border" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navOptions.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.path}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium text-primary transition-colors cursor-pointer ${
-                    isActive ? "bg-primary/10" : ""
-                  }`
-                }
-              >
-                {item.name}
-              </NavLink>
+            {navOptions.map((item, index) => (
+              <React.Fragment key={index}>
+                {item.role === "ALL" && (
+                  <NavLink
+                    key={item.name}
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className={({ isActive }) =>
+                      `block px-3 py-2 rounded-md text-base font-medium text-primary transition-colors cursor-pointer ${
+                        isActive ? "bg-primary/10" : ""
+                      }`
+                    }
+                  >
+                    {item.name}
+                  </NavLink>
+                )}
+                {data?.data?.data?.role === item.role && (
+                  <NavLink
+                    key={item.name}
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className={({ isActive }) =>
+                      `block px-3 py-2 rounded-md text-base font-medium text-primary transition-colors cursor-pointer ${
+                        isActive ? "bg-primary/10" : ""
+                      }`
+                    }
+                  >
+                    {item.name}
+                  </NavLink>
+                )}
+              </React.Fragment>
             ))}
           </div>
           {/* Mobile: Auth Buttons */}

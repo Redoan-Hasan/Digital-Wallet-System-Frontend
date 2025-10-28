@@ -11,7 +11,7 @@ export default function DashboardLayout() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset className="relative bg-background overflow-x-hidden">
+      <SidebarInset className="relative bg-background overflow-x-hidden overflow-y-auto">
         {/* Unified Background Blobs */}
         <div className="absolute top-20 -left-40 w-160 h-160 bg-primary/5 rounded-full blur-3xl animate-slow-spin" />
         <div className="hidden lg:block absolute top-60 right-20 w-120 h-120 bg-primary/5 rounded-full blur-3xl animate-slow-spin" />

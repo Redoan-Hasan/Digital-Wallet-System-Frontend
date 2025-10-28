@@ -51,7 +51,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <NavLink to={item.url}>
+                    <NavLink to={item.url} end>
                     {({ isActive }) => (
                       <SidebarMenuButton isActive={isActive}>
                         {item.title}

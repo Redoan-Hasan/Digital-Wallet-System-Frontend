@@ -1,12 +1,12 @@
 import AllUsers from "@/pages/admin/AllUsers";
 import AgentAddMoney from "@/pages/agent/AddMoney";
-import UserAddMoney from "@/pages/user/AddMoney";
-import BecomeAgent from "@/pages/user/BecomeAgent";
-import MyProfile from "@/pages/user/MyProfile";
-import MyWallet from "@/pages/user/MyWallet";
-import SendMoney from "@/pages/user/SendMoney";
-import TransactionHistory from "@/pages/user/TransactionHistory";
-import WithdrawMoney from "@/pages/user/WithdrawMoney";
+import UserAddMoney from "@/pages/userAndagent/AddMoney";
+import BecomeAgent from "@/pages/userAndagent/BecomeAgent";
+import MyProfile from "@/pages/userAndagent/MyProfile";
+import MyWallet from "@/pages/userAndagent/MyWallet";
+import SendMoney from "@/pages/userAndagent/SendMoney";
+import TransactionHistory from "@/pages/userAndagent/TransactionHistory";
+import WithdrawMoney from "@/pages/userAndagent/WithdrawMoney";
 import { Role } from "@/constants/role";
 import type { ComponentType } from "react";
 

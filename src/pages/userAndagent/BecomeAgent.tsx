@@ -1,12 +1,31 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useGetMyInfoQuery } from "@/redux/features/auth/auth.api";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  useGetMyInfoQuery,
+  useLogoutMutation,
+} from "@/redux/features/auth/auth.api";
 import { useMakeMeAgentMutation } from "@/redux/features/wallet/wallet.api";
 import { toast } from "sonner";
 import Loader from "@/components/Modules/Common/Loader";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 const BecomeAgent = () => {
-  const { data: userInfo, isLoading: isUserLoading } = useGetMyInfoQuery(undefined);
+  const navigate = useNavigate();
+  const [logout] = useLogoutMutation();
+
+  const { data: userInfo, isLoading: isUserLoading } = useGetMyInfoQuery(
+    undefined,
+    {
+      pollingInterval: 3000, 
+    }
+  );
   const [makeMeAgent, { isLoading }] = useMakeMeAgentMutation();
 
   const handleRequest = async () => {
@@ -20,7 +39,20 @@ const BecomeAgent = () => {
     }
   };
 
-  if (isUserLoading) {
+  useEffect(() => {
+    if (userInfo?.data?.data?.agentStatus === "APPROVED") {
+      toast.success(
+        "Congratulations! You are now an agent. Please log in again."
+      );
+      const performLogout = async () => {
+        await logout().unwrap();
+        navigate("/login");
+      };
+      performLogout();
+    }
+  }, [userInfo, logout, navigate]);
+
+  if (isUserLoading && !userInfo) {
     return <Loader />;
   }
 
@@ -43,19 +75,24 @@ const BecomeAgent = () => {
           )}
           {agentStatus === "PENDING" && (
             <p className="text-yellow-500">
-              Your request is pending approval.
+              Your request is pending approval. We will notify you once it's reviewed.
             </p>
           )}
           {agentStatus === "APPROVED" && (
             <p className="text-green-500">
-              Congratulations! You are now an agent.
+              Congratulations! You are now an agent. Redirecting you to login...
             </p>
           )}
-            {agentStatus === "SUSPEND" && (
+          {agentStatus === "SUSPEND" && (
             <p className="text-red-500">
-                Your agent request has been suspended.
+              Your agent request has been suspended.
             </p>
-            )}
+          )}
+          {agentStatus === "REJECTED" && (
+            <p className="text-red-500">
+              Your agent request has been rejected.
+            </p>
+          )}
         </CardContent>
       </Card>
     </div>

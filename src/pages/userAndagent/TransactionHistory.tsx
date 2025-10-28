@@ -135,6 +135,10 @@ const TransactionHistory = () => {
         return <ArrowLeftRight className="w-4 h-4 mr-2 text-purple-500" />;
       case TransactionType.CASH_OUT:
         return <LogOut className="w-4 h-4 mr-2 text-orange-500" />;
+      case TransactionType.ADD_MONEY_BY_AGENT:
+        return <ArrowLeftRight className="w-4 h-4 mr-2 text-green-500" />;
+      case TransactionType.WITHDRAW_MONEY_BY_AGENT:
+        return <ArrowRightLeft className="w-4 h-4 mr-2 text-red-500" />;
       default:
         return null;
     }
@@ -339,9 +343,18 @@ const TransactionHistory = () => {
                 </div>
               )}
 
-            {selectedTx.transactionType === TransactionType.SEND_MONEY &&
+            {(selectedTx.transactionType === TransactionType.SEND_MONEY ||
+              selectedTx.transactionType === TransactionType.CASH_OUT ||
+              selectedTx.transactionType ===
+                TransactionType.ADD_MONEY_BY_AGENT) &&
               selectedTx.receiverWallet?.user && (
                 <>
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">From</span>
+                    <span className="font-semibold">
+                      {userInfo?.data?.data?.name} (You)
+                    </span>
+                  </div>
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground">To</span>
                     <span className="font-semibold">
@@ -349,7 +362,9 @@ const TransactionHistory = () => {
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground">Phone</span>
+                    <span className="text-muted-foreground">
+                      Receiver Phone
+                    </span>
                     <span className="font-semibold">
                       {selectedTx.receiverWallet.user.phone}
                     </span>
@@ -357,7 +372,9 @@ const TransactionHistory = () => {
                 </>
               )}
 
-            {selectedTx.transactionType === TransactionType.CASH_IN &&
+            {(selectedTx.transactionType === TransactionType.CASH_IN ||
+              selectedTx.transactionType ===
+                TransactionType.WITHDRAW_MONEY_BY_AGENT) &&
               selectedTx.senderWallet?.user && (
                 <>
                   <div className="flex justify-between items-center">
@@ -367,27 +384,15 @@ const TransactionHistory = () => {
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground">Phone</span>
+                    <span className="text-muted-foreground">Sender Phone</span>
                     <span className="font-semibold">
                       {selectedTx.senderWallet.user.phone}
                     </span>
                   </div>
-                </>
-              )}
-
-            {selectedTx.transactionType === TransactionType.CASH_OUT &&
-              selectedTx.receiverWallet?.user && (
-                <>
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground">To</span>
                     <span className="font-semibold">
-                      {selectedTx.receiverWallet.user.name}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground">Phone</span>
-                    <span className="font-semibold">
-                      {selectedTx.receiverWallet.user.phone}
+                      {userInfo?.data?.data?.name} (You)
                     </span>
                   </div>
                 </>
