@@ -1,5 +1,6 @@
 import CommonLayout from "@/components/Modules/Layout/CommonLayout";
-import DashboardLayout from "@/components/Modules/Layout/DashboardLayout";
+import DashboardLayout from "@/components/Modules/Layout/DashboardLayout"
+
 import { Role } from "@/constants/role";
 import AllUsers from "@/pages/admin/AllUsers";
 import AboutUs from "@/pages/common/AboutUs";
@@ -14,10 +15,10 @@ import { generateRoutes } from "@/utils/generateRoutes";
 import { withAuth } from "@/utils/withAuth";
 import { createBrowserRouter } from "react-router";
 import { AdminSidebarItems } from "./AdminSidebarItems";
-import AddMoney from "@/pages/agent/AddMoney";
-import { AgentSidebarItems } from "./AgentSidebarItems";
 import { UserSidebarItems } from "./UserSidebarItems";
 import MyProfile from "@/pages/user/MyProfile";
+import AddMoney from "@/pages/user/AddMoney";
+import { AgentSidebarItems } from "./AgentSidebarItems";
 
 export const router = createBrowserRouter([
   {

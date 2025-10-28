@@ -1,0 +1,23 @@
+import { baseApi } from "@/redux/baseApi";
+import { type IResponse, type ITransaction } from "@/types";
+
+export const transactionApi = baseApi.injectEndpoints({
+  endpoints: (builder) => ({
+    getMyTransactions: builder.query<IResponse<{data:ITransaction[], meta:{limit: number,page: number,total:number,totalPage:number}}>, Record<string, string | undefined>>({
+      query: (query) => ({
+        url: "/transaction/get-my-transactions",
+        method: "GET",
+        params: query
+      }),
+      // transformResponse: (response: IResponse<{ data: ITransaction[] }>) => {
+      //   return {
+      //     ...response,
+      //     data: response.data.data,
+      //   };
+      // },
+      providesTags: ["TRANSACTION"],
+    }),
+  }),
+});
+
+export const { useGetMyTransactionsQuery } = transactionApi;

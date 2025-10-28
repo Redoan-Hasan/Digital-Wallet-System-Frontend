@@ -4,6 +4,7 @@ export interface IUser {
   _id?: string;
   wallet: string;
   name: string;
+  phone: string;
   email: string;
   password: string;
   pin : string;

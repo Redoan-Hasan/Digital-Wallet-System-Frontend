@@ -1,17 +1,9 @@
 import type { ComponentType } from "react";
 
 export type { IUser } from "./auth.type";
-export interface IResponse<T> {
-  success: boolean;
-  message: string;
-  data: T;
-  meta?: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPage: number;
-  };
-}
+export type { IWallet } from "./wallet.type";
+export type { ITransaction } from "./transaction.type";
+export type { IResponse } from "./response.type";
 
 export type TRole = "ADMIN" | "USER" | "AGENT";
 

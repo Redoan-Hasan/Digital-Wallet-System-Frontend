@@ -18,7 +18,7 @@ export const authApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["USER"],
     }),
-    register: builder.mutation<IResponse<null>, { name: string; email: string; password: string; pin: string }>({
+    register: builder.mutation<IResponse<null>,{ name: string; email: string; password: string; pin: string }>({
       query: (data) => ({
         url: "/user/register",
         method: "POST",
@@ -32,7 +32,39 @@ export const authApi = baseApi.injectEndpoints({
       }),
       providesTags: ["USER"],
     }),
+    resetPassword: builder.mutation<IResponse<null>,{ id: string; newPassword: string }>({
+      query: (data) => ({
+        url: "/auth/reset-password",
+        method: "POST",
+        data: data,
+      }),
+    }),
+    changePassword: builder.mutation<
+      IResponse<null>,
+      { oldPassword: string; newPassword: string }
+    >({
+      query: (data) => ({
+        url: "/auth/change-password",
+        method: "POST",
+        data: data,
+      }),
+    }),
+    changePin: builder.mutation<IResponse<null>,{ oldPin: string; newPin: string }>({
+      query: (data) => ({
+        url: "/auth/change-pin",
+        method: "POST",
+        data: data,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation , useGetMyInfoQuery , useLogoutMutation, useRegisterMutation } = authApi;
+export const {
+  useLoginMutation,
+  useGetMyInfoQuery,
+  useLogoutMutation,
+  useRegisterMutation,
+  useResetPasswordMutation,
+  useChangePasswordMutation,
+  useChangePinMutation,
+} = authApi;

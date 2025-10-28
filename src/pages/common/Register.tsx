@@ -20,7 +20,7 @@ export default function Register() {
                 <RegisterForm />
               </div>
             </div>
-            {/* Image Column - Flipped */}
+            {/* Image Column */}
             <div className="flex items-center justify-center h-[300px] md:h-[520px] lg:h-auto order-1 lg:order-2">
               <img
                 src="/loginphoto.jpg"

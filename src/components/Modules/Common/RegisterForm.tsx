@@ -29,6 +29,9 @@ import { useState } from "react";
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
   email: z.email({ message: "Invalid email address" }),
+  phone: z
+    .string()
+    .regex(/^01\d{9}$/, "Phone number must be 11 digits and start with 01"),
   password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters" }),
@@ -49,6 +52,7 @@ export function RegisterForm({
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       password: "",
       pin: "",
     },
@@ -72,7 +76,7 @@ export function RegisterForm({
       navigate("/");
       return;
     }
-    const isValid = await form.trigger(["name", "email", "password"]);
+    const isValid = await form.trigger(["name", "email", "phone", "password"]);
     if (isValid) {
       setStep(2);
     }
@@ -125,6 +129,26 @@ export function RegisterForm({
                             <Input
                               type="email"
                               placeholder="Type your email"
+                              className="w-full p-3 rounded-md bg-secondary/50 border border-border focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all duration-200"
+                              {...field}
+                            />
+                          </div>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Phone Number</FormLabel>
+                        <FormControl>
+                          <div className="relative">
+                            <Input
+                              type="tel"
+                              placeholder="e.g., 01XXXXXXXXX"
                               className="w-full p-3 rounded-md bg-secondary/50 border border-border focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all duration-200"
                               {...field}
                             />

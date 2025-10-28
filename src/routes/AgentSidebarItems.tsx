@@ -1,4 +1,4 @@
-import AddMoney from "@/pages/agent/AddMoney";
+import AddMoney from "@/pages/user/AddMoney";
 import type { ISidebarItem } from "@/types";
 
 export const AgentSidebarItems: ISidebarItem[] = [
@@ -8,8 +8,9 @@ export const AgentSidebarItems: ISidebarItem[] = [
       {
         title: "Add Money",
         url: "/agent/add-money",
-        component: AddMoney
+        component: AddMoney,
       },
+      
     ],
   },
 ];
