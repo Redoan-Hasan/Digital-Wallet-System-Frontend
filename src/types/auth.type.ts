@@ -1,5 +1,6 @@
 import type { TRole, TStatus } from ".";
 
+
 export interface IUser {
   _id?: string;
   wallet: string;

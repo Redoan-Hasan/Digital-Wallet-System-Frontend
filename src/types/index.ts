@@ -9,6 +9,9 @@ export type TRole = "ADMIN" | "USER" | "AGENT";
 
 export type TStatus = "ACTIVE" | "BLOCKED";
 
+export type TAgentStatus = "PENDING" | "APPROVED" | "REJECTED" | "NONE" | "SUSPENDED";
+
+
 export interface ISidebarItem {
   title: string;
   items: {

@@ -3,7 +3,15 @@ import { type IResponse,  type IWallet } from "@/types";
 import { type TAddMoneySource, type TWithdrawMoneySource } from "@/types/transaction.type";
 
 export const walletApi = baseApi.injectEndpoints({
-  endpoints: (builder) => ({getMyWallet: builder.query<IResponse<IWallet[]>, void>({
+  endpoints: (builder) => ({
+    getSingleWallet: builder.query<IResponse<IWallet[]>, string>({
+      query: (id) => ({
+        url: `/wallet/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["WALLET"],
+    }),
+    getMyWallet: builder.query<IResponse<IWallet[]>, void>({
       query: () => ({
         url: "/wallet/my-wallet",
         method: "GET",
@@ -61,6 +69,7 @@ export const walletApi = baseApi.injectEndpoints({
 });
 
 export const {
+  useGetSingleWalletQuery,
   useGetMyWalletQuery,
   useAddMoneyMutation,
   useWithdrawMoneyMutation,
