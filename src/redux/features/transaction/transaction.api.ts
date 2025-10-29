@@ -9,15 +9,17 @@ export const transactionApi = baseApi.injectEndpoints({
         method: "GET",
         params: query
       }),
-      // transformResponse: (response: IResponse<{ data: ITransaction[] }>) => {
-      //   return {
-      //     ...response,
-      //     data: response.data.data,
-      //   };
-      // },
+      providesTags: ["TRANSACTION"],
+    }),
+    getAllTransactions: builder.query<IResponse<{data:ITransaction[], meta:{limit: number,page: number,total:number,totalPage:number}}>, Record<string, string | undefined>>({
+      query: (query) => ({
+        url: "/transaction/get-all-transactions",
+        method: "GET",
+        params: query
+      }),
       providesTags: ["TRANSACTION"],
     }),
   }),
 });
 
-export const { useGetMyTransactionsQuery } = transactionApi;
+export const { useGetMyTransactionsQuery, useGetAllTransactionsQuery } = transactionApi;
