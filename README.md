@@ -14,7 +14,7 @@
 
 ## 🚀 Live Demo
 
-- **Frontend Live URL:** [https://your-frontend-live-url.com](https://your-frontend-live-url.com)
+- **Frontend Live URL:** [https://vaultpay-iota.vercel.app](https://vaultpay-iota.vercel.app)
 - **Backend Live URL:** [https://digital-wallet-system-server.vercel.app](https://digital-wallet-system-server.vercel.app)
 
 ---
