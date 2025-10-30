@@ -49,7 +49,6 @@ export function LoginForm({
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       const result = await login(data).unwrap();
-      console.log(result);
       toast.success(`thanks for login ${result?.data?.user?.name}`);
       navigate("/");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -13,7 +13,6 @@ import { Role } from "@/constants/role";
 
 const Navbar = () => {
   const { data } = useGetMyInfoQuery();
-  console.log(data);
   const [isOpen, setIsOpen] = useState(false);
   const [logout] = useLogoutMutation();
   const dispatch = useAppDispatch();

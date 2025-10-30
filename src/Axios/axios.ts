@@ -62,13 +62,12 @@ axiosInstance.interceptors.response.use(
       }
       isRefreshing = true;
       try {
-        const res = await axiosInstance.post("/auth/refresh-token");
-        console.log("res", res);
+        // const res = await axiosInstance.post("/auth/refresh-token");
+        await axiosInstance.post("/auth/refresh-token");
         processQueue(null);
         return axiosInstance(originalRequest);
       } catch (error) {
         processQueue(error);
-        console.log("error", error);
       }finally {
         isRefreshing = false;
       }

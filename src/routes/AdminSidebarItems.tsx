@@ -1,8 +1,10 @@
-import AdminDashboard from "@/pages/admin/AdminDashboard";
-import AgentManagement from "@/pages/admin/AgentManagement";
-import SystemTransactions from "@/pages/admin/SystemTransactions";
-import UserManagement from "@/pages/admin/UserManagement";
+import { lazy } from "react";
 import type { ISidebarItem } from "@/types";
+
+const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
+const UserManagement = lazy(() => import("@/pages/admin/UserManagement"));
+const AgentManagement = lazy(() => import("@/pages/admin/AgentManagement"));
+const SystemTransactions = lazy(() => import("@/pages/admin/SystemTransactions"));
 
 export const AdminSidebarItems: ISidebarItem[] = [
   {

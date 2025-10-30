@@ -17,14 +17,11 @@ import { useGetMyInfoQuery } from "@/redux/features/auth/auth.api";
 import type { TRole } from "@/types";
 import { Link, NavLink } from "react-router";
 
-// This is sample data.
-
-
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const {data: userData} = useGetMyInfoQuery();
   const sidebarItems = getSidebarItems(userData?.data?.data?.role as TRole)
   return (
-    <Sidebar {...props} className="bg-linear-to-b! from-primary/10 to-transparent backdrop-blur-sm border-0!">
+    <Sidebar {...props} id="app-sidebar" className="bg-linear-to-b! from-primary/10 to-transparent backdrop-blur-sm border-0!">
       <SidebarHeader>
         <div className="shrink-0 flex justify-between items-center">
             <Link to="/" className="flex items-center space-x-2">
@@ -50,7 +47,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarGroupContent>
               <SidebarMenu>
                 {item.items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
+                  <SidebarMenuItem key={item.title} id={`tour-${item.title.toLowerCase().replace(/\s+/g, '-')}`}>
                     <NavLink to={item.url} end>
                     {({ isActive }) => (
                       <SidebarMenuButton isActive={isActive}>

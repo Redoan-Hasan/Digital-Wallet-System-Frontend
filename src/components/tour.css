@@ -1,0 +1,82 @@
+/* src/components/tour.css */
+
+div.driver-popover {
+  background-color: oklch(from var(--card) l c h / 80%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-lg);
+  color: hsl(var(--card-foreground));
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+div.driver-popover .driver-popover-title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700;
+  color: hsl(var(--primary));
+}
+
+div.driver-popover .driver-popover-description {
+  color: hsl(var(--muted-foreground));
+}
+
+div.driver-popover .driver-popover-arrow-side-left.driver-popover-arrow {
+    background: linear-gradient(to top right, transparent 50%, hsl(var(--border)) 50%);
+}
+div.driver-popover .driver-popover-arrow-side-right.driver-popover-arrow {
+    background: linear-gradient(to top left, transparent 50%, hsl(var(--border)) 50%);
+}
+div.driver-popover .driver-popover-arrow-side-bottom.driver-popover-arrow {
+    background: linear-gradient(to top left, transparent 50%, hsl(var(--border)) 50%);
+}
+div.driver-popover .driver-popover-arrow-side-top.driver-popover-arrow {
+    background: linear-gradient(to bottom left, transparent 50%, hsl(var(--border)) 50%);
+}
+
+
+div.driver-popover .driver-popover-navigation-btns {
+  justify-content: space-between;
+  gap: 8px;
+}
+
+div.driver-popover .driver-popover-btn {
+  border-radius: var(--radius-md);
+  padding: 6px 12px;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+  border: 1px solid transparent;
+  text-transform: capitalize;
+}
+
+div.driver-popover .driver-popover-next-btn {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+div.driver-popover .driver-popover-next-btn:hover {
+  background-color: hsl(var(--primary) / 0.9);
+}
+
+div.driver-popover .driver-popover-prev-btn {
+  background-color: transparent;
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+div.driver-popover .driver-popover-prev-btn:hover {
+    background-color: hsl(var(--muted));
+}
+
+div.driver-popover .driver-popover-close-btn {
+    color: hsl(var(--muted-foreground));
+}
+div.driver-popover .driver-popover-close-btn:hover {
+    color: hsl(var(--foreground));
+}
+
+.driver-highlighted-element-stage {
+    background: transparent !important;
+    outline: 2px solid hsl(var(--primary));
+    box-shadow: 0 0 0 4px hsl(var(--background)), 0 0 0 6px hsl(var(--primary));
+    border-radius: var(--radius-lg);
+}

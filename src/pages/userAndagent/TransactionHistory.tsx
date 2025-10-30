@@ -119,9 +119,9 @@ const TransactionHistory = () => {
   }
 
   const transactions = data?.data?.data;
-  console.log(transactions);
+  // console.log(transactions);
   const meta = data?.data?.meta;
-  console.log(meta);
+  // console.log(meta);
 
   const renderTxIcon = (type: string) => {
     switch (type) {

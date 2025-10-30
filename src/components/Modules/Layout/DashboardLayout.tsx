@@ -5,11 +5,19 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { Tour } from "@/components/Tour";
 import { Outlet } from "react-router";
+import { useGetMyInfoQuery } from "@/redux/features/auth/auth.api";
+import { Role } from "@/constants/role";
+import { Suspense } from "react";
+import Loader from "../Common/Loader";
 
 export default function DashboardLayout() {
+  const { data: userData } = useGetMyInfoQuery(undefined);
+
   return (
     <SidebarProvider>
+      {userData?.data?.data?.role === Role.USER && <Tour />}
       <AppSidebar />
       <SidebarInset className="relative bg-background overflow-x-hidden overflow-y-auto">
         {/* Unified Background Blobs */}
@@ -18,14 +26,16 @@ export default function DashboardLayout() {
 
         <div className="relative z-10">
           <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4 bg-transparent">
-            <SidebarTrigger className="-ml-1" />
+            <SidebarTrigger id="sidebar-trigger-button" className="-ml-1" />
             <Separator
               orientation="vertical"
               className="mr-2 data-[orientation=vertical]:h-4"
             />
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4">
-            <Outlet />
+            <Suspense fallback={<Loader />}>
+              <Outlet />
+            </Suspense>
           </div>
         </div>
       </SidebarInset>

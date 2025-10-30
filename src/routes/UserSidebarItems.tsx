@@ -1,12 +1,14 @@
-import AddMoney from "@/pages/userAndagent/AddMoney";
-import BecomeAgent from "@/pages/userAndagent/BecomeAgent";
-import CashOut from "@/pages/userAndagent/CashOut";
-import MyProfile from "@/pages/userAndagent/MyProfile";
-import MyWallet from "@/pages/userAndagent/MyWallet";
-import SendMoney from "@/pages/userAndagent/SendMoney";
-import TransactionHistory from "@/pages/userAndagent/TransactionHistory";
-import WithdrawMoney from "@/pages/userAndagent/WithdrawMoney";
+import { lazy } from "react";
 import type { ISidebarItem } from "@/types";
+
+const AddMoney = lazy(() => import("@/pages/userAndagent/AddMoney"));
+const BecomeAgent = lazy(() => import("@/pages/userAndagent/BecomeAgent"));
+const CashOut = lazy(() => import("@/pages/userAndagent/CashOut"));
+const MyProfile = lazy(() => import("@/pages/userAndagent/MyProfile"));
+const MyWallet = lazy(() => import("@/pages/userAndagent/MyWallet"));
+const SendMoney = lazy(() => import("@/pages/userAndagent/SendMoney"));
+const TransactionHistory = lazy(() => import("@/pages/userAndagent/TransactionHistory"));
+const WithdrawMoney = lazy(() => import("@/pages/userAndagent/WithdrawMoney"));
 
 export const UserSidebarItems: ISidebarItem[] = [
   {
