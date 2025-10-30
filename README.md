@@ -27,7 +27,7 @@
 * [Key Dependencies](#-key-dependencies)
 * [Setup and Installation](#️-setup-and-installation)
 * [Environment Variables](#-environment-variables)
-* [Admin Access](#-admin-access)
+* [Testing Credentials](#-test-account-credentials)
 
 ---
 
