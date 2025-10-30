@@ -20,9 +20,9 @@
 ---
 
 ## 📖 Table of Contents
-* [Overview](#📝-overview)
+* [Overview](#-overview)
 * [Project Structure](#️-project-structure)
-* [Key Features](#✨-key-features)
+* [Key Features](#-key-features)
 * [Core Technologies](#️-core-technologies)
 * [Key Dependencies](#-key-dependencies)
 * [Setup and Installation](#️-setup-and-installation)
